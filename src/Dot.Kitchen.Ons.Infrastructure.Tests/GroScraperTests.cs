@@ -1,4 +1,5 @@
 using Dot.Kitchen.Ons.Infrastructure.Gro;
+using Microsoft.Extensions.Configuration;
 using System;
 using Xunit;
 
@@ -6,13 +7,22 @@ namespace Dot.Kitchen.Ons.Infrastructure.Tests
 {
     public class GroScraperTests
     {
+        IConfiguration Configuration { get; set; }
+
         private string _username;
         private string _password;
 
         public GroScraperTests()
         {
-            _username = "";
-            _password = "";
+            // the type specified here is just so the secrets library can 
+            // find the UserSecretId we added in the csproj file
+            var builder = new ConfigurationBuilder()
+                .AddUserSecrets<GroScraperTests>();
+
+            Configuration = builder.Build();
+
+            _username = Configuration["GroUsername"];
+            _password = Configuration["GroPassword"];
         }
 
         [Fact]

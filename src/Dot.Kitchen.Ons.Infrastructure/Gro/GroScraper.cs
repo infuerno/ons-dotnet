@@ -222,7 +222,7 @@ namespace Dot.Kitchen.Ons.Infrastructure.Gro
                 var entryId = orderUrl?.Split("EntryID=")[1];
 
                 var groReference = resultsRows[i + 1].TextContent.Replace("\n", "").Replace("\t", "").Trim();
-                var pattern = @"GRO Reference:(\d+).([MJSD]).Quarterin([A-Z\-\.\', ]+).Volume.(\w+).Page.(\w+)";
+                var pattern = @"GRO Reference:(\d+).([MJSD]).Quarterin([A-Z\-\.\'\&, ]+).Volume.(\w+).Page.(\w+)";
                 var matches = Regex.Match(groReference, pattern);
                 if (matches.Groups.Count != 6)
                     throw new ApplicationException($"Trying to parse GRO reference information from string '{groReference}' using pattern '{pattern}', expecting 6 group matches, only {matches.Groups.Count} found.");

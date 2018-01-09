@@ -30,7 +30,12 @@ namespace Dot.Kitchen.Ons.Presentation
         {
             services.AddMvc();
 
-            services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OnsConnectionString")));
+            // retrieve from secrets.json (aka secret manager tool)
+            var connString = Configuration["OnsConnectionString"];
+            var groUsername = Configuration["GroUsername"];
+            var groPassword = Configuration["GroPassword"];
+
+            services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(options => options.UseSqlServer(connString));
             services.AddScoped<IDatabaseContext>(provider => provider.GetService<DatabaseContext>());
 
             services.AddScoped<ISourceRepository, SourceRepository>();
@@ -40,6 +45,7 @@ namespace Dot.Kitchen.Ons.Presentation
             services.AddTransient<IGetScrapeListQuery, GetScrapeListQuery>();
             services.AddTransient<IGetScrapeDetailQuery, GetScrapeDetailQuery>();
             services.AddTransient<ICreateSourceCommand, CreateSourceCommand>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
