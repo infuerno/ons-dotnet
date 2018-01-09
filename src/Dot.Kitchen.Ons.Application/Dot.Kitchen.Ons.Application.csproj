@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dot.Kitchen.Ons.Domain\Dot.Kitchen.Ons.Domain.csproj" />
+    <ProjectReference Include="..\Dot.Kitchen.Ons.Infrastructure\Dot.Kitchen.Ons.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

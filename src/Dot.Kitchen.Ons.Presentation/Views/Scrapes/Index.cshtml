@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Dot.Kitchen.Ons.Application.Models.ScrapeModel>
+
+@{
+    ViewData["Title"] = "Scrapes";
+}
+
+<h2>Scrapes</h2>
+
+<p>
+    <a asp-action="Create">Start New</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SourceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfRecordsScraped)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartedAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeTaken)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.SourceName)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.NumberOfRecordsScraped)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.StartedAt)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.TimeTaken)
+            </th>
+            <td>
+                <!--<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> | -->
+                <!--<a asp-action="Details" asp-route-id="@item.Id">Details</a> -->
+                <!--<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>-->
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
